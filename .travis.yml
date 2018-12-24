@@ -12,12 +12,7 @@ before_install:
 script:
   - npm run lint
   - npm run test
-deploy:
-  provider: script
-  script: npm run deploy-dev
-  skip_cleanup: false
-  on:
-    branch: master
+  - npm run deploy-dev
 notifications:
   email:
     on_failure: always
