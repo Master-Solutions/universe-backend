@@ -24,22 +24,22 @@ const createOrg = data => {
     .then(() => params.Item);
 };
 
-const orgs = [
-  {
-    org_id: '1',
-    name: 'MasterSolutions',
-  },
-  {
-    org_id: '2',
-    name: 'Testing Org',
-  },
-];
+// const orgs = [
+//   {
+//     org_id: '1',
+//     name: 'MasterSolutions',
+//   },
+//   {
+//     org_id: '2',
+//     name: 'Testing Org',
+//   },
+// ];
 
 export default {
   Query: {
     hello: () => 'Hello world!',
-    orgs: () => orgs,
-    //orgs: (root, args) => listOrgs(args),
+    // orgs: () => orgs,
+    orgs: (root, args) => listOrgs(args),
   },
   Mutation: {
     addOrg: (root, args) => createOrg(args),

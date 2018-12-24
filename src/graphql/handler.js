@@ -13,15 +13,12 @@ const server = new ApolloServer({
     console.log(response);
     return response;
   },
-  context: ({ event, context }) => {
-    console.log('Event:', event);
-    return {
-      headers: event.headers,
-      functionName: context.functionName,
-      event,
-      context,
-    };
-  },
+  context: ({ event, context }) => ({
+    headers: event.headers,
+    functionName: context.functionName,
+    event,
+    context,
+  }),
   // playground: {
   //   endpoint: process.env.PLAYGROUND_ENDPOINT
   //     ? process.env.PLAYGROUND_ENDPOINT

@@ -21,6 +21,7 @@ const generatePolicy = (principalId, effect, resource) => {
   return authResponse;
 };
 
+/* eslint-disable consistent-return */
 export default (event, context, callback) => {
   console.log('event', event);
   if (!event.authorizationToken) {
