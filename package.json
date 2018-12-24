@@ -43,7 +43,6 @@
     "webpack-node-externals": "^1.7.2"
   },
   "scripts": {
-    "precommit": "lint-staged",
     "lint": "eslint src/**/*.js",
     "lint-fix": "eslint --fix src/**/*.js ",
     "prettier": "prettier --write \"src/**/*.{js,css,json}\"",
@@ -61,5 +60,10 @@
     ]
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  }
 }
