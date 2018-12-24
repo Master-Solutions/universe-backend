@@ -1,14 +1,26 @@
 language: node_js
 node_js:
-- '8.10'
+  - '8.10'
 env:
   global:
-  - AWS_ACCESS_KEY_ID=AKIAI6NZ4VPRNCJJTRYQ
-  - AWS_DEFAULT_REGION=eu-central-1
+    - AWS_ACCESS_KEY_ID=AKIAI6NZ4VPRNCJJTRYQ
+    - AWS_DEFAULT_REGION=eu-central-1
 branches:
   only:
-  - master
+    - master
 before_install:
-- pip install --user awscli
-- export PATH=$PATH:$HOME/.local/bin
-script: make build
+  - pip install --user awscli
+  - export PATH=$PATH:$HOME/.local/bin
+script:
+  - npm run lint
+  - npm run test
+deploy:
+  provider: script
+  script: node node_modules/serverless/bin/serverless deploy --stage=dev
+  skip_cleanup: true
+  on:
+    branch: master
+notifications:
+  email:
+    on_failure: always
+
