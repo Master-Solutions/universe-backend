@@ -9,15 +9,13 @@ branches:
   only:
     - master
 before_install:
-  - pip install --user awscli
-  - export PATH=$PATH:$HOME/.local/bin
 script:
   - npm run lint
   - npm run test
 deploy:
   provider: script
-  script: node node_modules/serverless/bin/serverless deploy --stage=dev
-  skip_cleanup: true
+  script: npm run deploy-dev
+  skip_cleanup: false
   on:
     branch: master
 notifications:
