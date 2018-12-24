@@ -4,18 +4,13 @@ provider:
   name: aws
   runtime: nodejs8.10
   stage: ${opt:stage, self:custom.defaultStage}
-  profile: ${self:custom.profiles.${self:provider.stage}}
   region: eu-central-1
   iamRoleStatements: ${file(./config/serverless/roles.yml)}
   environment:
-    SERVERLESS_EXPRESS_PLATFORM: aws
     TABLE_ORGS: ${self:service}-${self:provider.stage}-orgs
 
 custom:
   defaultStage: dev
-  profiles:
-    dev: ms
-    prod: ms
   webpack:
     webpackConfig: ./config/webpack.config.js
     includeModules:

@@ -1,6 +1,9 @@
 language: node_js
 node_js:
   - '8.10'
+cache:
+  directories:
+    - node_modules
 env:
   global:
     - AWS_ACCESS_KEY_ID=AKIAI6NZ4VPRNCJJTRYQ
