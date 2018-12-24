@@ -1,0 +1,36 @@
+authorize:
+    handler: src/auth/handler.default
+
+graphql:
+    handler: src/graphql/handler.default
+    events:
+    - http:
+        path: graphql
+        method: post
+        integration: lambda-proxy
+        # authorizer: authorize
+        cors:
+            origin: '*'
+            headers:
+              - Content-Type
+              - X-Amz-Date
+              - Authorization
+              - X-Api-Key
+              - X-Amz-Security-Token
+              - X-Amz-User-Agent
+            allowCredentials: false
+    - http:
+        path: graphql
+        method: get
+        integration: lambda-proxy
+        # authorizer: authorize
+        cors:
+            origin: '*'
+            headers:
+              - Content-Type
+              - X-Amz-Date
+              - Authorization
+              - X-Api-Key
+              - X-Amz-Security-Token
+              - X-Amz-User-Agent
+            allowCredentials: false

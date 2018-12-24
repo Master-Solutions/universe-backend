@@ -1,0 +1,9 @@
+{
+	"path": "/graphql",
+	"resource": "/graphql",
+	"headers": {},
+	"httpMethod": "GET",
+	"queryStringParameters": {
+		"query": "{orgs{name}}"
+	}
+}

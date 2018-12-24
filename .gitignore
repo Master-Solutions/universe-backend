@@ -54,8 +54,18 @@ typings/
 # Yarn Integrity file
 .yarn-integrity
 
-# dotenv environment variables file
-.env
 
 # next.js build output
 .next
+
+# dotenv environment variables file
+.env
+env.yml
+
+# Serverless
+.webpack
+.serverless
+.dynamodb
+.trash
+
+.idea

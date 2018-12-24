@@ -1,0 +1,24 @@
+Resources:
+  GatewayResponseDefault4XX:
+    Type: 'AWS::ApiGateway::GatewayResponse'
+    Properties:
+      ResponseParameters:
+        gatewayresponse.header.Access-Control-Allow-Origin: "'*'"
+        gatewayresponse.header.Access-Control-Allow-Headers: "'*'"
+      ResponseType: DEFAULT_4XX
+      RestApiId:
+        Ref: 'ApiGatewayRestApi'
+
+  NicknamesTable:
+    Type: 'AWS::DynamoDB::Table'
+    Properties:
+      KeySchema:
+        - AttributeName: org_id
+          KeyType: HASH
+      AttributeDefinitions:
+        - AttributeName: org_id
+          AttributeType: S
+      ProvisionedThroughput:
+        ReadCapacityUnits: 1
+        WriteCapacityUnits: 1
+      TableName: ${self:provider.environment.TABLE_ORGS}
